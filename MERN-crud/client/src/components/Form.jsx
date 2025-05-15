@@ -9,7 +9,6 @@ function Form() {
   const { selectedEmp } = useContext(EmployeeContext);
   const navigate = useNavigate();
   const [formData, setFromData] = useState({
-    id: "",
     name: "",
     email: "",
     phone: "",
@@ -24,6 +23,7 @@ function Form() {
     setFromData((prev) => ({ ...prev, [name]: value }));
   };
   const handleSubmit = async (e) => {
+    console.log(formData);
     const values = Object.values(formData);
     const isEmpty = values.some(
       (value) => value === "" || value === undefined || value === null
@@ -40,7 +40,10 @@ function Form() {
         if (data?.success) alert(data?.message);
         navigate("/home");
       } else {
-        const { data } = await empBaseUrl.put(`/update-employee/${formData.id}`, formData);
+        const { data } = await empBaseUrl.put(
+          `/update-employee/${formData.id}`,
+          formData
+        );
         if (data?.success) alert(data?.message);
         navigate("/home");
       }
@@ -61,18 +64,20 @@ function Form() {
     });
   };
   useEffect(() => {
-    setFromData({
-      id: selectedEmp._id,
-      name: selectedEmp.name || "",
-      email: selectedEmp.email || "",
-      phone: selectedEmp.phone || "",
-      department: selectedEmp.department || "",
-      salary: selectedEmp.salary || 0,
-      address: selectedEmp.address || "",
-      status: selectedEmp.status || "",
-      dateOfJoining: selectedEmp.dateOfJoining || "",
-    });
-  }, []);
+    if (selectedEmp) {
+      setFromData({
+        id: selectedEmp._id,
+        name: selectedEmp.name || "",
+        email: selectedEmp.email || "",
+        phone: selectedEmp.phone || "",
+        department: selectedEmp.department || "",
+        salary: selectedEmp.salary || 0,
+        address: selectedEmp.address || "",
+        status: selectedEmp.status || "",
+        dateOfJoining: selectedEmp.dateOfJoining || "",
+      });
+    }
+  }, [selectedEmp]);
   return (
     <>
       <form action="" method="post" className="form" onSubmit={handleSubmit}>

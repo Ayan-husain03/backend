@@ -71,8 +71,9 @@ table {
   width: 100%;
   text-align: left;
   border-color: #fff9f9;
-  
-
+  th {
+    background-color: #c5c5c5;
+  }
   th,
   td {
     padding: 10px;
