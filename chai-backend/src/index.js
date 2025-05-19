@@ -13,7 +13,7 @@ connectDb()
     });
     app.listen(process.env.PORT || 8000, () => {
       console.log(
-        `Your app is running on https://localhost:${process.env.PORT}`
+        `Server is running on http://localhost:${process.env.PORT}`
       );
     });
   })
