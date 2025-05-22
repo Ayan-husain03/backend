@@ -117,4 +117,15 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# test file
+asynHandler.js
+apiError.js
+apiResponse.js
+user.js
+video.js
+cloudinary.js
+multer.js
+user.con.js
+userRoutes.js
+
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Node
