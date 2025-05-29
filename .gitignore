@@ -127,5 +127,6 @@ cloudinary.js
 multer.js
 user.con.js
 userRoutes.js
+login.js
 
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Node
